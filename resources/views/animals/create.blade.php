@@ -51,7 +51,7 @@
                             <label>Center</label>
                             <select class="form-select form-control form-dark bg-dark color-dark text-white" name="center_id">
                                 <option selected value="">-</option>
-                                @foreach ($centers as $item)
+                                @foreach ($centres as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>

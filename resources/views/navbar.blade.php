@@ -12,7 +12,7 @@
                 <a href="/animals">Animals</a>
             </h5>
             <h5 class="mx-2">
-                <a href="/center">Centers</a>
+                <a href="/centre">Centers</a>
             </h5>
             @auth
             <h5><a href="{{ route('profile') }}">Profile</a></h5>

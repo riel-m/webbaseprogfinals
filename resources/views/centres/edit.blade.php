@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
-    <h1>Edit Center {{$centers->id}}</h1>
-    <form action="/center/{{$centers->id}}" method="POST" enctype="multipart/form-data">
+    <h1>Edit Center {{$centres->id}}</h1>
+    <form action="/centre/{{$centres->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="row">
@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{$centers->name}}" placeholder="Enter Name">
+                            <input type="text" class="form-control" name="name" value="{{$centres->name}}" placeholder="Enter Name">
                             @error('name')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -20,7 +20,7 @@
 
                         <div class="form-group">
                             <label>Location</label>
-                            <input type="text" class="form-control" name="location" value="{{$centers->location}}" placeholder="Enter NRP">
+                            <input type="text" class="form-control" name="location" value="{{$centres->location}}" placeholder="Enter NRP">
                             @error('location')
                                 <div class="alert alert-danger">
                                     {{ $message }}

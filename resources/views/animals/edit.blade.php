@@ -42,9 +42,9 @@
                             <label>Center</label>
                             <select class="form-select form-control form-dark bg-dark color-dark text-white" name="center_id">
                                 <option value="">-</option>
-                                @foreach ($centers as $temp)
+                                @foreach ($centres as $temp)
                                 <option value="{{$temp-> id}}"
-                                    @if($temp->id == $animals->center->id)
+                                    @if($temp->id == $animals->centre->id)
                                     selected
                                     @endif
                                 >{{$temp->name}}</option>

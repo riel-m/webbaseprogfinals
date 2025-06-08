@@ -16,7 +16,7 @@ class centrecontroller extends Controller
     public function create()
     {
         $centres = centres::all();
-        return view('centres.index', compact('centres'));
+        return view('centres.create', compact('centres'));
     }
 
     public function store(Request $request)

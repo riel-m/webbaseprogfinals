@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
-    <h1>Add Center</h1>
-    <form action="/center" method="POST" enctype="multipart/form-data">
+    <h1>Add Centre</h1>
+    <form action="/centre" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-12">
@@ -19,7 +19,7 @@
 
                         <div class="form-group bg-dark text-white">
                             <label>Location</label>
-                            <input type="text" class="form-control form-dark bg-dark color-dark text-white" name="location" placeholder="Enter the center location">
+                            <input type="text" class="form-control form-dark bg-dark color-dark text-white" name="location" placeholder="Enter the centre's location">
                             @error('location')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -29,7 +29,7 @@
 
                         <div class="form-group bg-dark text-white">
                             <label>Telephone Numbers</label>
-                            <input type="text" class="form-control form-dark bg-dark color-dark text-white" name="telephone" placeholder="Enter the center telephone numbers">
+                            <input type="text" class="form-control form-dark bg-dark color-dark text-white" name="telephone" placeholder="Enter the centre's telephone numbers">
                             @error('telephone')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -39,7 +39,7 @@
 
                         <div class="form-group bg-dark text-white">
                             <label>Email</label>
-                            <input type="text" class="form-control form-dark bg-dark color-dark text-white" name="email" placeholder="Enter the center email">
+                            <input type="text" class="form-control form-dark bg-dark color-dark text-white" name="email" placeholder="Enter the centre's email">
                             @error('email')
                                 <div class="alert alert-danger">
                                     {{ $message }}
