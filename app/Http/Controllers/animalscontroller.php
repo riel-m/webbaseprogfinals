@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Animals;
+use App\Models\animals;
 use Illuminate\Http\Request;
 use \App\Models\centres;
 
-class AnimalsController extends Controller
+class animalscontroller extends Controller
 {
     /**
      * Display a listing of the resource.
