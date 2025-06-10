@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use app\Models\User;
+use app\Models\animals;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,9 +11,9 @@ class adoptionplan extends Model
 {
     use HasFactory;
 
-    protected $table = "adoptionplans";
+    protected $table = "adoptionplan";
 
-    protected $fillabel = [
+    protected $fillable = [
         'animal_id',
         'user_id',
         'adopter_name',

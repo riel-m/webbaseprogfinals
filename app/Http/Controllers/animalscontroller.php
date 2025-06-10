@@ -13,7 +13,7 @@ class animalscontroller extends Controller
      */
     public function index()
     {
-        $animals = Animals::all();
+        $animals = animals::all();
         return view('animals.index', compact('animals'));
     }
 
@@ -31,40 +31,43 @@ class animalscontroller extends Controller
         return view('animals.create', compact('centres'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //store
     public function store(Request $request)
-    {
-        $request->validate(
-            [
-                'name' => 'required',
-                'breed' => 'required',
-                'age' => 'required|numeric',
-                'centres_id' => 'required',
-                'desc' => 'required|max:2048',
-                'image' => 'image|file|max:2048'
-            ],
-            [
-                'name.required' => 'Name can\'t be empty!',
-                'breed.required' => 'NRP can\'t be empty!',
-                'age.required' => 'Jurusan can\'t be empty!',
-                'centres_id' => 'Please choose your angkatan',
-                'desc.required' => 'desc can\'t be empty!'
-            ]
-        );
+{
+    $request->validate(
+        [
+            'name' => 'required',
+            'breed' => 'required',
+            'age' => 'required|numeric',
+            'centre_id' => 'required',
+            'desc' => 'required|max:2048',
+            'image' => 'image|file|max:2048'
+        ],
+        [
+            'name.required' => 'Name can\'t be empty!',
+            'breed.required' => 'The genes Mason!, what do they mean?! can\'t be empty!',
+            'age.required' => 'U telling me this animal is beyond age? bffr can\'t be empty!',
+            'centre_id.required' => 'Cuz where is blud supposed to get bro from TT',
+            'desc.required' => 'So u just want potential adopters to come in blind huh? Unless they are but u get me can\'t be empty!'
+        ]
+    );
 
-        Animals::create([
-            'name' => $request->name,
-            'centres_id' => $request->center_id,
-            'breed' => $request->breed,
-            'age' => $request->age,
-            'desc' => $request->desc,
-            'image' => $request->file('image')->store('post-images')
-        ]);
-
-        return redirect('/animals');
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('post-images');
     }
+
+    animals::create([
+        'name' => $request->name,
+        'centre_id' => $request->centre_id,
+        'breed' => $request->breed,
+        'age' => $request->age,
+        'desc' => $request->desc,
+        'image' => $imagePath
+    ]);
+
+    return redirect('/animals');
+}
 
     /**
      * Display the specified resource.
@@ -76,7 +79,7 @@ class animalscontroller extends Controller
 
     public function show($id)
     {
-        $animals = Animals::findorfail($id);
+        $animals = animals::findorfail($id);
         return view('animals.show', compact('animals'));
     }
 
@@ -90,7 +93,7 @@ class animalscontroller extends Controller
 
     public function edit($id)
     {
-        $animals = Animals::findorfail($id);
+        $animals = animals::findorfail($id);
         $centres = centres::all();
         return view('animals.edit', compact('animals', 'centres'));
     }
@@ -110,21 +113,21 @@ class animalscontroller extends Controller
                 'name' => 'required',
                 'breed' => 'required',
                 'age' => 'required|numeric',
-                'centres_id' => 'required',
+                'centre_id' => 'required',
             ],
             [
                 'name.required' => 'name can\'t be empty!',
                 'breed.required' => 'breed can\'t be empty!',
                 'age.required' => 'age can\'t be empty!',
-                'centres_id' => 'Please choose your center',
+                'centre_id' => 'Please choose your centre',
             ]
         );
 
-        $animals = Animals::findorfail($id);
+        $animals = animals::findorfail($id);
 
         $animals_data = [
             'name' => $request->name,
-            'centres_id' => $request->center_id,
+            'centre_id' => $request->centre_id,
             'breed' => $request->breed,
             'age' => $request->age,
         ];
@@ -139,7 +142,7 @@ class animalscontroller extends Controller
      */
     public function destroy($id)
     {
-        $animals = Animals::findorfail($id);
+        $animals = animals::findorfail($id);
         $animals->delete();
 
         return redirect('/animals');

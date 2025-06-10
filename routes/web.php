@@ -32,13 +32,13 @@ Route::get('/animals/{animals_id}', [animalscontroller::class, 'show']);
 Route::get('/animals/{animals_id}/edit', [animalscontroller::class, 'edit'])->middleware('role_admin');
 Route::put('/animals/{animals_id}', [animalscontroller::class, 'update']);
 Route::delete('/animals/{animals_id}', [animalscontroller::class, 'destroy'])->middleware('role_admin');
-Route::post('/animals/{animals}', [adoptionplancontroller::class, 'store'])->middleware('auth')->name('adoptionplan.store');
+Route::post('/animals/{animal}/adopt', [adoptionplancontroller::class, 'store'])->name('adoptionplan.store')->middleware('auth');
 
 // Centres
 Route::get('/centre/create', [centrecontroller::class, 'create'])->middleware('role_admin');
 Route::get('/centre', [centrecontroller::class, 'index']);
 Route::post('/centre', [centrecontroller::class, 'store']);
-Route::get('/centre/{centres_id}', [centrecontroller::class, 'show']);
+Route::get('/centre/{centre_id}', [centrecontroller::class, 'show']);
 Route::get('/centre/{centre_id}/edit', [centrecontroller::class, 'edit']);
 Route::put('/centre/{centre_id}', [centrecontroller::class, 'update']);
 Route::delete('/centre/{centres}', [centrecontroller::class, 'destroy'])->middleware('role_admin');

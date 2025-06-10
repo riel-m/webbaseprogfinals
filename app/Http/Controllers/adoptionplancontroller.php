@@ -13,19 +13,23 @@ class adoptionplancontroller extends Controller
 
     public function create() {}
 
-    public function store(Request $request, animals $animals)
-    {
-        $user = Auth::user();
+    public function store(Request $request, $animalId)
+{
+    $request->validate([
+        'animal_id' => 'required|exists:animals,id'
+    ]);
 
-        $adoptionplan = adoptionplan::create([
-            'animal_id' => $animals->id,
-            'user_id' => $user->id,
-            'adopter_name' => $user->name,
-            'adopter_email' => $user->email,
-        ]);
+    $user = Auth::user();
 
-        return redirect()->back()->with('success', 'Adoption Plan Successfully Created');
-    }
+    $adoptionplan = adoptionplan::create([
+        'animal_id' => $animalId, // or $request->animal_id
+        'user_id' => $user->id,
+        'adopter_name' => $user->name,
+        'adopter_email' => $user->email,
+    ]);
+
+    return redirect()->back()->with('success', 'Adoption successful!');
+}
 
     public function show(adoptionplan $adoptionplan) {}
 
