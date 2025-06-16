@@ -7,7 +7,7 @@
         <div>
             <h2>Adoption Plans</h2>
             <ul>
-                @forelse ($adoptionplan ?? [] as $plan)
+                @forelse ($adoptionplan as $plan)
                     <li>
                         <h5>Animal Name: {{ $plan->animal->name }}</h5>
                     </li>

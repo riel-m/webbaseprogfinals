@@ -47,7 +47,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function adoptionplans()
+    public function adoptionplan()
     {
         return $this->hasMany(adoptionplan::class);
     }
