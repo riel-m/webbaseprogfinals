@@ -13,7 +13,7 @@ class profilecontroller extends Controller
     public function index()
     {
         $user = Auth::user();
-        $adoptionplan = $user->adoptionplan;
+        $adoptionplan = $user->adoptionplan()->with('animal')->get();
 
         return view('profile', compact('adoptionplan'));
     }

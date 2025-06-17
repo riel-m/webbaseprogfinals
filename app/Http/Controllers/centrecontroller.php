@@ -91,6 +91,6 @@ class centrecontroller extends Controller
         $animals = centres::findorfail($id);
         $animals->delete();
 
-        return redirect('/centres');
+        return redirect('/centre');
     }
 }
