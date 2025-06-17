@@ -1,56 +1,51 @@
 @extends('master')
 @section('content')
 
-<main class="form-registration w-100 m-auto">
-    <form action="/register" method="post">
-    @csrf
-      <center><img class="mb-4" src="/img/pethub-logo-dark.png" alt="" width="100" height="100"></center>
-      <h1 class="h3 mb-3 fw-normal">Registration Form</h1>
-
-      <div class="form-floating">
-        <input type="text" name="name" class="form-control" @error('name') is-invalid @enderror id="name" placeholder="Saha Manh?" required>
-        <label for="name">Name</label>
-        @error('name')
-            <div>
-                {{ $message }}
-            </div>
-        @enderror
-      </div>
-
-      <div class="form-floating">
-        <input type="text" name="username" class="form-control" @error('userusername') is-invalid @enderror id="username" placeholder="Username" required>
-        <label for="username">Username</label>
-        @error('username')
-        <div>
-            {{ $message }}
+<main class="form-registration w-100 m-auto" style="max-width: 420px; padding: 15px;">
+    <form action="/register" method="post" novalidate>
+        @csrf
+        <div class="text-center mb-4">
+            <h1 class="h3 fw-normal">Registration Form</h1>
         </div>
-    @enderror
-      </div>
 
-      <div class="form-floating">
-        <input type="email" name="email" class="form-control" @error('email') is-invalid @enderror id="email" placeholder="name@example.com" required>
-        <label for="email">Email address</label>
-        @error('email')
-        <div>
-            {{ $message }}
+        <div class="form-floating mb-3">
+            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" value="{{ old('name') }}" required autofocus>
+            <label for="name">Name</label>
+            @error('name')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
         </div>
-    @enderror
-      </div>
 
-      <div class="form-floating">
-        <input type="password" name="password" class="form-control" @error('password') is-invalid @enderror id="password" placeholder="Password" required>
-        <label for="password">Password</label>
-        @error('password')
-        <div>
-            {{ $message }}
+        <div class="form-floating mb-3">
+            <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" placeholder="Username" value="{{ old('username') }}" required>
+            <label for="username">Username</label>
+            @error('username')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
         </div>
-    @enderror
-      </div>
 
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <div class="form-floating mb-3">
+            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="name@example.com" value="{{ old('email') }}" required>
+            <label for="email">Email address</label>
+            @error('email')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-floating mb-4">
+            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
+            <label for="password">Password</label>
+            @error('password')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
     </form>
-    <small> <a href="/login">Already a User?</a> </small>
-  </main>
+
+    <small class="d-block text-center mt-3">
+        Already a user? <a href="/login">Login here</a>
+    </small>
+</main>
 
 @endsection
-

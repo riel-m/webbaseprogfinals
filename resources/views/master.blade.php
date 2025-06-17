@@ -18,6 +18,7 @@
     <div class="content mx-5 my-4">
         @yield('content')
     </div>
+    <script src="https://unpkg.com/alpinejs" defer></script>
 </body>
 </html>
 

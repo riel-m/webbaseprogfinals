@@ -20,6 +20,11 @@ class animals extends Model
         "desc"
     ];
 
+    public function adoptionPlans()
+    {
+        return $this->hasMany(adoptionplan::class, 'animal_id');
+    }
+
     public function centre()
     {
         return $this->belongsTo(centres::class);

@@ -1,25 +1,32 @@
 @extends('master')
 @section('content')
-    <h1>Pethub Centers</h1>
-    <div class="row mx-5 justify-content-center">
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Pethub Centers</h2>
+
+    <div class="row justify-content-center gx-4 gy-4">
         @foreach ($centres as $item)
-            <div class="card mx-3 bg-dark text-white" style="width: 20rem;">
-                <div class="card-body d-flex flex-column align-items-center">
-                    <h4 class="my-3">{{$item->name}}</h4>
-                    <i class="bi bi-house-door" style='font-size:180px'></i>
-                    <div class="data my-3">
-                        <h5>Name: {{$item->name}}</h5>
-                        <h5>Location: {{$item->location}}</h5>
+            <div class="col-md-4 col-lg-3">
+                <div class="card bg-dark text-white h-100 shadow">
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h4 class="mb-3">{{ $item->name }}</h4>
+                        <i class="bi bi-house-door" style="font-size: 120px; color: #f97316;"></i>
+
+                        <div class="my-3 w-100">
+                            <h5 class="mb-1"><strong>Name:</strong> {{ $item->name }}</h5>
+                            <h5><strong>Location:</strong> {{ $item->location }}</h5>
+                        </div>
+
+                        <a href="/centre/{{ $item->id }}" class="btn btn-warning text-white mt-auto px-4">Details</a>
                     </div>
-                    <a href="/centre/{{$item->id}}" class="btn btn-sm btn-info">Details</a>
                 </div>
             </div>
         @endforeach
     </div>
+
     @if (auth()->check() && auth()->user()->is_admin)
-        <div class="d-flex mx-5 my-5 justify-content-center">
-            <a href="/centre/create" class="btn btn-orange btn-info mx-5" style="max-width: 18rem;">+Add Center</a>
+        <div class="d-flex justify-content-center my-5">
+            <a href="/centre/create" class="btn btn-warning text-white px-5" style="max-width: 18rem;">+ Add Center</a>
         </div>
     @endif
+</div>
 @endsection
-
